@@ -1,4 +1,5 @@
 #include "app.h"
+#include <unordered_set>
 
 namespace vsite::oop::v9
 {
@@ -56,6 +57,8 @@ namespace vsite::oop::v9
 	}
 
 	unsigned word_frequency::frequency(std::string key) {
-		return words.contains(key) ? words[key] : 0;
+		auto frequency = words.find(key);
+
+		return frequency == words.end() ? 0 : frequency->second;
 	}
 }
